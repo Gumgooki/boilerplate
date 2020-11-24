@@ -2,6 +2,7 @@
 const path = require('path')
 const express = require('express')
 const app = express()
+const db = require('./db')
 
 //logging middleware
 const morgan = require('morgan')
@@ -32,8 +33,13 @@ app.use(function (err, req, res, next){
 
 //this will start up the server
 const port = process.env.PORT || 3000;
-app.listen(port, function() {
-  console.log("Knock, knock")
-  console.log("Who's there?")
-  console.log(`Your server, listening on port ${port}`)
-})
+
+db.sync({force: true})
+.then(
+  app.listen(port, function() {
+    console.log("Knock, knock")
+    console.log("Who's there?")
+    console.log(`Your server, listening on port ${port}`)
+  })
+)
+
