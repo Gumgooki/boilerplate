@@ -6,7 +6,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const googleConfig = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: '/auth/google/callback'
+  callbackURL: 'http://localhost:3000/home'
 }
 
 
@@ -31,10 +31,10 @@ const strategy = new GoogleStrategy(googleConfig, function(token, refreshToken, 
 passport.use(strategy)
 
 //once we make an auth folder we should correct this
-router.get('/auth/google', passport.authenticate('google', { scope: 'email' }))
+router.get('/', passport.authenticate('google', { scope: 'email' }))
 
 //same with this
-router.get('/auth/google/callback', passport.authenticate('google', {
+router.get('/callback', passport.authenticate('google', {
   successRedirect: '/home',
   failureRedirect: '/login'
 }))

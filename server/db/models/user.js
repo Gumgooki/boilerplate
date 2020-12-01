@@ -30,7 +30,7 @@ const User = db.define('user', {
 })
 
 User.prototype.correctPassword = function(candidatePassword){
-  return this.Model.encryptPassword(candidatePassword, this.salt) === this.password
+  return User.encryptPassword(candidatePassword, this.salt) === this.password
 }
 
 User.prototype.sanitize = function(){

@@ -3,10 +3,6 @@ const router = require('express').Router();
 router.use('/users', require('./users')); // matches all requests to /api/users/
 router.use('/puppies', require('./puppies')); // matches all requests to  /api/puppies/
 router.use('/kittens', require('./kittens')); // matches all requests to  /api/kittens/
-router.use('/login', require('./login'))
-router.use('/signup', require('./signup'))
-router.use('/logout', require('./logout'))
-router.use('/google', require('./google'))
 
 module.exports = router;
 

@@ -65,6 +65,8 @@ passport.deserializeUser(async (id, done) => {
 
 //this is pulling all the routes from the api folder
 app.use('/api', require('./api'))
+//this is pulling all the routes from the auth folder
+app.use('/auth', require('./auth'))
 
 //this is sending our index.html file for anything that doesn't match any routes
 app.get('*', function (req, res) {
