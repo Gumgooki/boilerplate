@@ -5,6 +5,11 @@ const app = express()
 const db = require('./db')
 const session = require('express-session')
 
+
+if(process.env.NODE_ENV !== 'production') {
+  require('../secrets')
+}
+
 //logging middleware
 const morgan = require('morgan')
 app.use(morgan('dev'))

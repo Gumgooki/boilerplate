@@ -17,6 +17,10 @@ const User = db.define('user', {
   },
   salt: {
     type: Sequelize.STRING
+  },
+  // eslint-disable-next-line camelcase
+  google_id:{
+    type: Sequelize.STRING
   }
 }, {
   hooks: {

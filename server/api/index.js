@@ -6,6 +6,7 @@ router.use('/kittens', require('./kittens')); // matches all requests to  /api/k
 router.use('/login', require('./login'))
 router.use('/signup', require('./signup'))
 router.use('/logout', require('./logout'))
+router.use('/google', require('./google'))
 
 module.exports = router;
 
