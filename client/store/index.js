@@ -5,7 +5,7 @@ import {createLogger} from 'redux-logger'
 
 
 //below is just a placeholder reducer to show the relationship between a reducer and this index file
-import user from './user.js'
+import user from './user'
 
 
 //i'll create a pre-emptive combined reducer, just to make it easier to seperate out seperate reducers from the store creation
