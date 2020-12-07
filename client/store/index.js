@@ -3,6 +3,7 @@ import {createStore, applyMiddleware, combineReducers} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import {createLogger} from 'redux-logger'
 
+
 //below is just a placeholder reducer to show the relationship between a reducer and this index file
 import user from './user.js'
 

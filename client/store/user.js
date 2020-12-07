@@ -41,7 +41,7 @@ export const auth = (email, password, method) => async dispatch => {
 
   try {
     dispatch(getUser(res.data))
-    history.pushState('/home')
+    history.push('/home')
   } catch(dispatchOrHistoryErr){
     console.error(dispatchOrHistoryErr)
   }
