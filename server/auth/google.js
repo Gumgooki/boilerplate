@@ -6,7 +6,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const googleConfig = {
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/home'
+  callbackURL: process.env.GOOOGLE_CALLBACK
 }
 
 
@@ -17,15 +17,18 @@ const strategy = new GoogleStrategy(googleConfig, function(token, refreshToken, 
   const name = profile.displayName
   const email = profile.emails[0].value
 
-  User.findOne({where: {googleId: googleId}}).then(function(user){
-    if(!user) {
-      return User.create({name, email, googleId}).then(function (user) {
-        done(null, user)
-      });
+  User.findOne({where: { googleId: googleId  }})
+  .then(function (user) {
+    if (!user) {
+      return User.create({ name, email, googleId })
+        .then(function (user) {
+          done(null, user);
+        });
     } else {
-      done(null, user)
+      done(null, user);
     }
-  }).catch(done)
+  })
+  .catch(done);
 })
 
 passport.use(strategy)
@@ -35,7 +38,9 @@ router.get('/', passport.authenticate('google', { scope: 'email' }))
 
 //same with this
 router.get('/callback', passport.authenticate('google', {
+  prompt: 'select_account',
   successRedirect: '/home',
   failureRedirect: '/login'
 }))
+
 module.exports = router

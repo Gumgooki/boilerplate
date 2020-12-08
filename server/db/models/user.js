@@ -19,7 +19,7 @@ const User = db.define('user', {
     type: Sequelize.STRING
   },
   // eslint-disable-next-line camelcase
-  google_id:{
+  googleId:{
     type: Sequelize.STRING
   }
 }, {
